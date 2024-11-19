@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout with Top and Side Navigation</title>
+  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/create.css">
+  <link rel="stylesheet" href="style/publish.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+ 
+
+   <!-- CSS for AlertifyJS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+
+   <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+   
+
+</head>
+<body>
+  <style>
+
+.template {
+    height: 20vh;
+    background: #00535e;
+    padding: 10px;
+    border-radius: 20px;
+    position: sticky;
+    top: 0px;
+    z-index: 999 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .alertify .ajs-header {
+      color: #ffffff !important;
+      font-weight: 700;
+      background: #123c41 !important;
+      border-bottom: #eee 1px solid;
+      border-radius: 2px 2px 0 0;
+  }
+  .alertify .ajs-dialog {
+    position: relative;
+    margin: 5% auto;
+    min-height: 110px;
+    max-width: 500px;
+    padding: 24px 24px 0 24px;
+    outline: 0;
+    background-color: #fff;
+    z-index: 99999999;
+}
+  </style>
+    
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <span class="burger-icon" onclick="toggleNav()">☰</span>
+    
+   <script>
+    // Function to extract URL parameters
+    function getURLParameters() { 
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const regex = /([^&=]+)=([^&]*)/g;
+    let match;
+
+    while (match = regex.exec(queryString)) {
+        params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+    }
+
+    // Store parameters in session storage
+    for (const key in params) {
+        sessionStorage.setItem(key, params[key]);
+    }
+
+    // Retrieve user parameter, defaulting to 'Unknown user' if not provided
+    const user = params.user  ;
+    // Update the relevant HTML elements with the user information
+    document.getElementById("users").textContent = user;
+    document.getElementById("profile").textContent = user;
+
+    // Return the params object if needed elsewhere
+    return params;
+}
+
+
+    // Call the function when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', getURLParameters);
+  </script>
+
+
+<div class="row_top">
+    <div class="Welcomemsg">
+      <label class="users">Hello, Mr. <span id="users"></span></label>
+      <p class="text-gray">Welcome to Exam site</p>
+    </div>
+<div class="top_nav_content">
+  
+  <input type="search" class="searchbar" placeholder=" &#xF002; Search by exam title" style="font-family:Arial, FontAwesome" >
+</div>
+
+<div class="profile">
+  <img src="source/Ellipse 1.svg" >
+  <div class="userdetails">
+  <label class="uname users"> <span id="profile"></span></label>
+  <p class="text-gray">Student</p>
+  </div>
+</div>
+</div>
+
+  </div>
+
+
+
+
+  <!-- Side Navigation -->
+  <div class="side-nav" id="sideNav">
+    <a href="#" id="homeLink" class="menulink">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="22" height="22" viewBox="0 0 22 22" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82099 0.841828C10.0398 0.623112 10.3365 0.500244 10.6458 0.500244C10.9552 0.500244 11.2519 0.623112 11.4707 0.841828L18.4707 7.84183L20.804 10.1752C21.0165 10.3952 21.1341 10.6899 21.1314 10.9958C21.1288 11.3017 21.0061 11.5943 20.7898 11.8106C20.5735 12.0269 20.2808 12.1496 19.975 12.1523C19.6691 12.1549 19.3744 12.0373 19.1543 11.8248L18.8125 11.483V19.1667C18.8125 19.7855 18.5667 20.379 18.1291 20.8166C17.6915 21.2542 17.098 21.5 16.4792 21.5H12.9792C12.6697 21.5 12.373 21.3771 12.1542 21.1583C11.9354 20.9395 11.8125 20.6427 11.8125 20.3333V16.8333H9.47915V20.3333C9.47915 20.6427 9.35624 20.9395 9.13744 21.1583C8.91865 21.3771 8.62191 21.5 8.31249 21.5H4.81249C4.19365 21.5 3.60016 21.2542 3.16257 20.8166C2.72499 20.379 2.47915 19.7855 2.47915 19.1667V11.483L2.13732 11.8248C1.91728 12.0373 1.62258 12.1549 1.31669 12.1523C1.01079 12.1496 0.718175 12.0269 0.501865 11.8106C0.285556 11.5943 0.162859 11.3017 0.1602 10.9958C0.157542 10.6899 0.275136 10.3952 0.487653 10.1752L2.82099 7.84183L9.82099 0.841828Z" />
+        </svg>
+        &nbsp;Home
+    </a>
+    
+    <a href="#" id="scheduleLink" class="menulink" style="text-align: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="29" height="28" viewBox="0 0 29 28" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.04628 2.79999C8.30367 2.79999 7.59148 3.09499 7.06638 3.62009C6.54128 4.14519 6.24628 4.85738 6.24628 5.59999V22.4C6.24628 23.1426 6.54128 23.8548 7.06638 24.3799C7.59148 24.905 8.30367 25.2 9.04628 25.2H20.2463C20.9889 25.2 21.7011 24.905 22.2262 24.3799C22.7513 23.8548 23.0463 23.1426 23.0463 22.4V10.3796C23.0461 9.63704 22.751 8.92497 22.2259 8.39999L17.4463 3.62039C16.9213 3.09525 16.2092 2.80015 15.4667 2.79999H9.04628ZM11.8463 16.8C11.8463 16.4287 11.6988 16.0726 11.4362 15.81C11.1737 15.5475 10.8176 15.4 10.4463 15.4C10.075 15.4 9.71888 15.5475 9.45633 15.81C9.19378 16.0726 9.04628 16.4287 9.04628 16.8V21C9.04628 21.3713 9.19378 21.7274 9.45633 21.9899C9.71888 22.2525 10.075 22.4 10.4463 22.4C10.8176 22.4 11.1737 22.2525 11.4362 21.9899C11.6988 21.7274 11.8463 21.3713 11.8463 21V16.8ZM14.6463 12.6C15.0176 12.6 15.3737 12.7475 15.6362 13.01C15.8988 13.2726 16.0463 13.6287 16.0463 14V21C16.0463 21.3713 15.8988 21.7274 15.6362 21.9899C15.3737 22.2525 15.0176 22.4 14.6463 22.4C14.275 22.4 13.9189 22.2525 13.6563 21.9899C13.3938 21.7274 13.2463 21.3713 13.2463 21V14C13.2463 13.6287 13.3938 13.2726 13.6563 13.01C13.9189 12.7475 14.275 12.6 14.6463 12.6ZM20.2463 11.2C20.2463 10.8287 20.0988 10.4726 19.8362 10.21C19.5737 9.94749 19.2176 9.79999 18.8463 9.79999C18.475 9.79999 18.1189 9.94749 17.8563 10.21C17.5938 10.4726 17.4463 10.8287 17.4463 11.2V12.6C17.4463 12.9713 17.5938 13.3274 17.8563 13.5899C18.1189 13.8525 18.475 14 18.8463 14C19.2176 14 19.5737 13.8525 19.8362 13.5899C20.0988 13.3274 20.2463 12.9713 20.2463 12.6V11.2Z" fill="#999999" />
+        </svg>
+        &nbsp;Schedule
+    </a>
+  
+    <script>
+      // Function to extract URL parameters and store in session storage
+      function getURLParameters() { 
+          const params = {};
+          const queryString = window.location.search.substring(1);
+          const regex = /([^&=]+)=([^&]*)/g;
+          let match;
+    
+          while (match = regex.exec(queryString)) {
+              params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+          }
+    
+          // Store parameters in session storage
+          Object.keys(params).forEach(key => {
+              sessionStorage.setItem(key, params[key]);
+          });
+    
+          // Return parameters for immediate usage
+          return params;
+      }
+    
+      function populateLinks() {
+          const params = getURLParameters();
+          const studentClass = params.class || 'Unknown Class';
+          const rollno = params.rollno || 'Unknown Roll Number';
+          const user = params.user || 'Unknown User';
+    
+          // Set link hrefs dynamically
+          const homeLink = document.getElementById('homeLink');
+          const scheduleLink = document.getElementById('scheduleLink');
+    
+          if (homeLink && scheduleLink) {
+              homeLink.href = `studentdashboard.html?class=${studentClass}&user=${user}`;
+              scheduleLink.href = `Schedule.html?class=${studentClass}&rollno=${rollno}&user=${user}`;
+          } else {
+              console.warn("Links not found. Ensure elements have correct IDs.");
+          }
+      }
+    
+      // Use DOMContentLoaded to ensure elements are ready
+      document.addEventListener("DOMContentLoaded", populateLinks);
+    </script>
+    
+  <img class="sidenavbanner" src="source/studentimg.png" style="width: 100%;">
+  
+  </div>
+
+<style>
+  .sidenavbanner{
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+  }
+</style>
+
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+   
+
+
+
+    <!-- Question Content Area -->
+    <div class="main_content_container" >
+        <div class="template">
+            <div class="exam_head">
+                <!-- Maths 2024 -->
+            </div>
+            <div class="timerange"></div>
+            <div class="countdown-display" id="countdown-display"></div> <!-- Add this element for countdown display -->
+            <div id="overlay" class="overlay">
+
+                <!-- <p>Your session is end, Result will announced by teachers</p> -->
+
+            </div>
+            <div id="five-min-warning" class="overlay"></div>
+        </div>
+        <div class="question" id="questionsContainer"></div>
+      <!-- Questions will be dynamically loaded here -->
+    </div>
+  
+<style>
+
+.countdown-display{
+    padding: 10px;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    right: -450px;
+}
+
+
+.main_content_container{
+ 
+    margin: 20px;
+    padding: 0px;
+    border-radius: 20px;
+    background: #F6F6F6;
+    overflow: auto;
+    height: 510px !important;
+}
+
+
+  .popcontstd{
+
+      color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 10px;
+}
+</style>
+
+
+    <div class="nextbtnparent" >
+      <div class="upbtn nextbtn" id="published">
+        <button class="btnlable
+        " onclick="getCheckedValues();" style="
+      
+        background: transparent;
+        border: navajowhite;
+        color: #ffff;
+    ">Submit</button>
+      </div>
+    </div>
+  </div>
+
+<!-- Popup Overlay -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+<div class="close" id="buttonclose">
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeiconbutton" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <path d="M8.44727 21.5538L15.001 15L21.5548 21.5538M21.5548 8.44625L14.9998 15L8.44727 8.44625" stroke="#00535E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+</div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="checkico" width="136" height="136" viewBox="0 0 136 136" fill="none">
+            <path d="M67.9998 11.3333L82.8833 22.1907L101.308 22.1567L106.967 39.6893L121.893 50.49L116.166 68L121.893 85.51L106.967 96.3107L101.308 113.843L82.8833 113.809L67.9998 124.667L53.1163 113.809L34.6911 113.843L29.0329 96.3107L14.1069 85.51L19.8331 68L14.1069 50.49L29.0329 39.6893L34.6911 22.1567L53.1163 22.1907L67.9998 11.3333Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M48.1665 68L62.3332 82.1667L90.6665 53.8333" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      <p class="popcontstd"><span id="examname"></span> Exam has been Recorded Successfully </p>
+
+      <p class="popcontstd">Score Obtained - <span id="scoreValue">0</span> / 100</p>
+      <!-- <button onclick="closePopup()" class="btn btn-primary">Yes, Publish</button>
+      <button onclick="closePopup()" class="btn btn-secondary">Cancel</button> -->
+    </div>
+  </div>
+
+
+  <div class="popup-overlay" id="popupOverlaydescriptive">
+    <div class="popup-content">
+<div class="close" id="buttonclosedesc">
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeiconbutton" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <path d="M8.44727 21.5538L15.001 15L21.5548 21.5538M21.5548 8.44625L14.9998 15L8.44727 8.44625" stroke="#00535E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+</div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="checkico" width="136" height="136" viewBox="0 0 136 136" fill="none">
+            <path d="M67.9998 11.3333L82.8833 22.1907L101.308 22.1567L106.967 39.6893L121.893 50.49L116.166 68L121.893 85.51L106.967 96.3107L101.308 113.843L82.8833 113.809L67.9998 124.667L53.1163 113.809L34.6911 113.843L29.0329 96.3107L14.1069 85.51L19.8331 68L14.1069 50.49L29.0329 39.6893L34.6911 22.1567L53.1163 22.1907L67.9998 11.3333Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M48.1665 68L62.3332 82.1667L90.6665 53.8333" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      <p class="popcontstd"><span id="examname"></span> Exam has been Recorded Successfully </p>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+  <script>
+
+
+function startCountdown() {
+    const timerange = sessionStorage.getItem('TimeRange');
+    const isoString = sessionStorage.getItem('ExamDate');
+
+    console.log("Timerange from session:", timerange);
+    console.log("ExamDate from session:", isoString);
+
+    if (!timerange || !isoString) {
+        console.log("Invalid session data, missing TimeRange or ExamDate.");
+        document.getElementById("countdown-display").innerText = "Invalid session data.";
+        return;
+    }
+
+    const [start, end] = timerange.split('-');
+    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+    const examDate = new Date(isoString);
+    
+
+ 
+
+    const now = new Date();
+    const startDate = new Date(`${currentDate} ${start}`);
+    const endDate = new Date(`${currentDate} ${end}`);
+
+  
+
+    const currentTimeInSeconds = Math.floor(now.getTime() / 1000);
+    const startTimeInSeconds = Math.floor(startDate.getTime() / 1000);
+    const endTimeInSeconds = Math.floor(endDate.getTime() / 1000);
+
+    console.log("Current Time (in seconds):", currentTimeInSeconds);
+    console.log("Start Time (in seconds):", startTimeInSeconds);
+    console.log("End Time (in seconds):", endTimeInSeconds);
+
+    const timeRemainingInSeconds = Math.max(0, endTimeInSeconds - currentTimeInSeconds);
+
+    if (timeRemainingInSeconds <= 0) {
+        console.log("Time's up or countdown has already passed.");
+        document.getElementById("countdown-display").innerText = "Time's up!";
+        document.getElementById("overlay").style.display = "flex"; // Show overlay
+        executeAfterTimeUp(); // Execute when time's up
+        return;
+    }
+
+    // If the exam is today and the current time is within the range
+    if (currentTimeInSeconds >= startTimeInSeconds && currentTimeInSeconds < endTimeInSeconds) {
+        let totalSeconds = timeRemainingInSeconds;
+
+        const interval = setInterval(() => {
+            const hrs = Math.floor(totalSeconds / 3600);
+            const mins = Math.floor((totalSeconds % 3600) / 60);
+            const secs = totalSeconds % 60;
+
+            // Update the countdown display
+            document.getElementById("countdown-display").innerText = `${hrs}h ${mins}m ${secs}s`;
+
+            // Alert 5 minutes before time's up
+            if (totalSeconds === 300) {
+
+                alertify.alert(
+            `<div style="display: flex; align-items: center;">
+                <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" alt="Alert Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+                <span>Your Exam is going to end in 5 minutes.</span>
+            </div>`
+        )
+        .setHeader("Alert") // Set custom header title here
+        .setting({
+            'onok': function() {
+               
+        }
+    });
+
+         }
+
+              
+            
+
+            // If time is up, clear the interval
+            if (totalSeconds <= 0) {
+                clearInterval(interval); // Clear interval to stop the countdown
+                document.getElementById("countdown-display").innerText = "Time's up!";
+                document.getElementById("overlay").style.display = "flex"; // Show overlay
+                getCheckedValues();
+            }
+
+            totalSeconds--;
+        }, 1000); // 1000ms = 1 second
+
+    } else {
+        // If the session has not started or is outside the valid time range
+        const hrs = Math.floor(timeRemainingInSeconds / 3600);
+        const mins = Math.floor((timeRemainingInSeconds % 3600) / 60);
+        const secs = timeRemainingInSeconds % 60;
+        document.getElementById("countdown-display").innerText = `${hrs}h ${mins}m ${secs}s`;
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Document is ready, starting countdown...");
+    startCountdown();  // Call the function without needing arguments
+});
+
+
+let isSubmitting = false;
+
+// Open popup and add blur effect
+function openPopup(score) {
+    // Update the score value in the popup
+    const response =sessionStorage.getItem('Subject');
+    document.getElementById('examname').textContent = response; 
+    document.getElementById("popupOverlay").classList.add("active");
+    document.getElementById('scoreValue').textContent = score; 
+    // Show the popup
+    // document.getElementById('scorePopup').style.display = 'block';
+}
+
+function openPopupdescriptive(){
+    const response =sessionStorage.getItem('Subject');
+    document.getElementById('examname').textContent = response; 
+    document.getElementById("popupOverlaydescriptive").classList.add("active");
+}
+
+
+// Close popup and remove blur effect
+function closePopup() {
+  document.getElementById("popupOverlay").classList.remove("active");
+  document.getElementById("popupOverlaydescriptive").classList.remove("active");
+//   document.body.classList.remove("blur");
+
+        const params = getURLParameters();
+        const studentClass = params.class || 'Unknown Class';
+        const rollno = params.rollno || 'Unknown Roll Number';
+        const user = params.user || 'Unknown Roll Number';
+
+window.location.href = `studentdashboard.html?class=${studentClass}&rollno=${rollno}&user=${user}`; // Change "index.html" to the actual path of your index page if different
+}
+
+
+function closePopupdescriptive() {
+
+  document.getElementById("popupOverlaydescriptive").classList.remove("active");
+//   document.body.classList.remove("blur");
+
+        const params = getURLParameters();
+        const studentClass = params.class || 'Unknown Class';
+        const rollno = params.rollno || 'Unknown Roll Number';
+        const user = params.user || 'Unknown Roll Number';
+
+window.location.href = `studentdashboard.html?class=${studentClass}&rollno=${rollno}&user=${user}`; // Change "index.html" to the actual path of your index page if different
+}
+
+
+document.getElementById("buttonclose").addEventListener("click", closePopup);
+// Function to process the input string and load it into session storage
+document.getElementById("buttonclosedesc").addEventListener("click", closePopupdescriptive);
+
+// Function to process the data and store it in session storage
+async function processQuestions() {
+    try {
+        const response =sessionStorage.getItem('uploadedContent');
+        const data = await response.json();
+
+        // Check if the response contains the expected data structure
+        if (!data || !Array.isArray(data) || data.length === 0) {
+            console.error("No data found in the response.");
+            return;
+        }
+
+        // Set the exam title in session storage
+        sessionStorage.setItem('examtitel', data[0].examTitle); // Assuming data[0].examTitle exists
+        // Store the uploaded content (questions) in session storage
+        sessionStorage.setItem('uploadedContent', JSON.stringify(data));
+
+        console.log("Data processed and stored in session storage.");
+    } catch (error) {
+        console.error("Error processing questions:", error);
+    }
+}
+
+
+// Function to load questions from session storage and display them
+function loadQuestions() {
+    const actualData = sessionStorage.getItem('uploadedContent');
+
+    // Parse the actual data from session storage
+    if (!actualData) {
+        console.error("No questions found in session storage.");
+        return;
+    }
+
+    const actualDataArray = JSON.parse(actualData);
+    const questionsContainer = document.getElementById('questionsContainer');
+    questionsContainer.innerHTML = ''; // Clear any existing content
+
+    // Iterate over the questions and create the UI
+    actualDataArray.slice(0, 20).forEach((question, index) => {
+        // Create a container for each question
+        const questionContainer = document.createElement('div');
+        questionContainer.classList.add('question-block', 'mb-4', 'p-3', 'border', 'rounded');
+
+        // Question title
+        const questionTitle = document.createElement('h5');
+        questionTitle.innerText = `Q${index + 1}. ${question.question}`;
+        questionContainer.appendChild(questionTitle);
+
+        // Check if options exist
+        if (question.options && question.options.length > 0) {
+            // Create checkboxes for options (allowing multiple selections)
+            question.options.forEach((option, optionIndex) => {
+                const optionContainer = document.createElement('div');
+                optionContainer.classList.add('form-check');
+
+                const optionInput = document.createElement('input');
+                optionInput.classList.add('form-check-input');
+                optionInput.type = 'checkbox';  // Set to checkbox for multiple selection
+                optionInput.name = `question${index}`; // Group checkboxes by question
+                optionInput.id = `question${index}_option${optionIndex}`;
+                optionInput.value = option;
+
+                // Add event listener to track selected option
+                optionInput.addEventListener('change', function() {
+                    console.log(`Selected option for question ${index}: ${option}`);
+                    // Store or use `option` as the selected answer for this question if needed
+                });
+
+                const optionLabel = document.createElement('label');
+                optionLabel.classList.add('form-check-label');
+                optionLabel.htmlFor = `question${index}_option${optionIndex}`;
+                optionLabel.innerText = option;
+
+                optionContainer.appendChild(optionInput);
+                optionContainer.appendChild(optionLabel);
+                questionContainer.appendChild(optionContainer);
+            });
+        } else {
+            // If no options, create a text area for user input
+            sessionStorage.setItem('questionType', 'descriptive');
+            const textAreaContainer = document.createElement('div');
+            const textArea = document.createElement('textarea');
+            textArea.classList.add('form-control', 'mt-2');
+            textArea.placeholder = "Please provide your answer here...";
+            textAreaContainer.appendChild(textArea);
+            questionContainer.appendChild(textAreaContainer);
+        }
+
+        questionsContainer.appendChild(questionContainer);
+    });
+}
+
+// Call the function to load questions when the page loads
+window.onload = loadQuestions;
+
+
+
+// Function to set exam title from session storage
+function setExamTitle() {
+    const examTitle = sessionStorage.getItem('Subject'); // Retrieve exam title
+    const examHeadElement = document.querySelector('.exam_head'); // Select the exam head element
+
+    if (examHeadElement && examTitle) {
+        examHeadElement.innerText = examTitle; // Set the inner text of the exam head element
+    }
+}
+
+// Call the processQuestions function to load data
+processQuestions().then(() => {
+    loadQuestions(); // Load questions after processing
+    setExamTitle(); // Set the exam title
+}).catch(error => {
+    console.error("Error during loading process:", error);
+});
+
+  
+  
+
+
+
+function getCheckedValues() {
+    const questionsContainer = document.getElementById('questionsContainer');
+    const results = {};
+    let allAnswered = true; // Flag to check if all questions are answered
+    let hasCheckboxes = false; // Flag to check if there are checkboxes (objective question)
+    let hasTextArea = false; // Flag to check if there are textareas (descriptive question)
+    
+    // Get the current status of the countdown timer (you can use a global flag or state to determine if the time is up)
+    const isTimeUp = document.getElementById("countdown-display").innerText === "Time's up!";
+    
+    // Get all question blocks
+    const questionBlocks = questionsContainer.querySelectorAll('.question-block');
+
+    questionBlocks.forEach((questionBlock, index) => {
+        // Find the selected checkbox for objective questions
+        const selectedCheckboxes = questionBlock.querySelectorAll(`input[name="question${index}"]:checked`);
+        // Find the textarea for descriptive questions
+        const textArea = questionBlock.querySelector('textarea');
+
+        // Check if there are checkboxes (objective question)
+        if (selectedCheckboxes.length > 0) {
+            hasCheckboxes = true;
+            results[`question${index}`] = Array.from(selectedCheckboxes).map(checkbox => checkbox.value); // Store selected checkbox values
+        } else if (textArea && textArea.value.trim() !== '') {
+            // If it's a descriptive question and the textarea is filled, store its value
+            hasTextArea = true;
+            results[`question${index}`] = textArea.value.trim();
+        } else {
+            results[`question${index}`] = null; // No answer
+            allAnswered = false; // Set flag to false if any question is unanswered
+        }
+    });
+
+    // If time is up, allow submitting with unanswered questions, but alert the user
+    if (isTimeUp && !allAnswered) {
+        alertify.alert(
+            `<div style="display: flex; align-items: center;">
+                <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" alt="Alert Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+                <span>Time's up! Some questions were not answered.</span>
+            </div>`
+        )
+        .setHeader("Alert") // Set custom header title here
+        .setting({
+            'onok': function() {
+               
+
+                // Handle Descriptive Answers or Checkbox Answers before redirect
+                if (hasTextArea) {
+                    handleDescriptiveAnswers(results); // Call the function to handle descriptive answers
+                } else if (hasCheckboxes) {
+                    fetchDataAndPopulate(); // Call the function for checkbox (objective) answers
+                }
+
+               
+        const params = getURLParameters();
+        const studentClass = params.class || 'Unknown Class';
+        const rollno = params.rollno || 'Unknown Roll Number';
+        const user = params.user || 'Unknown Roll Number';
+
+        window.location.href = `studentdashboard.html?class=${studentClass}&rollno=${rollno}&user=${user}`; // Change "index.html" to the actual path of your index page if different
+
+            }
+        });
+        
+        return results; // Return the results even if not all questions are answered, because time is up
+    }
+
+    // If not all questions have been answered, show an alert before proceeding
+    if (!allAnswered) {
+        alertify.alert(
+            `<div style="display: flex; align-items: center;">
+                <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" alt="Alert Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+                <span>Please answer all questions before proceeding.</span>
+            </div>`
+        )
+        .setHeader("Alert") // Set custom header title here
+        .setting({
+            'onok': function() {
+                console.log("Alert dismissed");
+            }
+        });
+
+        return null; // Return null if not all answered
+    }
+
+    // Conditional handling based on the type of input (checkbox or textarea)
+    if (hasTextArea) {
+        handleDescriptiveAnswers(results); // Call the function to handle descriptive answers
+    } else if (hasCheckboxes) {
+        fetchDataAndPopulate(); // Call the function for checkbox (objective) answers
+    }
+    
+    return results; // Return the results object containing selected values
+}
+
+
+
+async function handleDescriptiveAnswers(results) {
+    // Get the ExamDate from sessionStorage
+    const examDateString = sessionStorage.getItem("ExamDate");
+    
+    let formattedExamDate = null;
+
+    if (examDateString) {
+        // Parse the date string into a Date object
+        const examDate = new Date(examDateString);
+
+        // Format the date as YYYY-MM-DD
+        const year = examDate.getFullYear();
+        const month = String(examDate.getMonth() + 1).padStart(2, '0'); // Ensure month is two digits
+        const day = String(examDate.getDate()).padStart(2, '0'); // Ensure day is two digits
+
+        // Combine the year, month, and day
+        formattedExamDate = `${year}-${month}-${day}`;
+    }
+    let descriptivedata = null; // Initialize descriptivedata
+
+   
+        // Parse the UTC date string into a Date object
+      
+
+      
+
+        const TimeRange = sessionStorage.getItem('TimeRange');
+        const Subject = sessionStorage.getItem('Subject');
+        const examTitle = sessionStorage.getItem('examtitel');
+        const params = getURLParameters();
+        const studentClass = params.class || 'Unknown Class';
+        const rollno = params.rollno || 'Unknown Roll Number';
+        const user = params.user || 'Unknown User';
+
+        // Retrieve and process the questions from session storage
+        const uploadedContent = sessionStorage.getItem('uploadedContent');
+        let questionList = [];
+
+        try {
+            const questionsArray = JSON.parse(uploadedContent);
+            questionList = questionsArray.map(q => q.question); // Extract only question texts
+        } catch (error) {
+            console.error("Error parsing uploadedContent:", error);
+        }
+
+        const questionsCommaSeparated = questionList.join(', '); // Convert to comma-separated string
+
+        // Process results to get a comma-separated answer string
+        const answersList = Object.values(results).map(answer => answer || ""); // Handle null or empty answers
+        const answersCommaSeparated = answersList.join(', '); // Convert to comma-separated string
+
+        // Prepare data for descriptive answers
+        descriptivedata = {
+            selectedClass: studentClass,
+            notcomplete: 0,
+            question: questionsCommaSeparated, // Comma-separated questions
+            class: studentClass,
+            rollno: rollno,
+            completed: 1,
+            name: user,
+            answers: answersCommaSeparated, // Comma-separated answers
+            testname: examTitle,
+            subject: Subject,
+            examdate: formattedExamDate,
+            duration: TimeRange,
+        };
+   
+
+    // Make sure descriptivedata is defined before proceeding
+    if (!descriptivedata) {
+        console.error("Descriptive data is not prepared correctly.");
+        return; // Exit if descriptivedata is not ready
+    }
+
+    try {
+        const response = await fetch('http://localhost:8000/api/tutorials/descriptive', { // Use the new API endpoint for descriptive answers
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(descriptivedata),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save descriptive answers: ' + response.statusText);
+        }
+
+        const result = await response.json();
+        console.log('Descriptive answers saved successfully:', result);
+        openPopupdescriptive();
+        // Optionally handle the result, e.g., show a success message
+
+    } catch (error) {
+        console.error('Error saving descriptive answers:', error);
+    }
+}
+
+function getURLParameters() { 
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let match;
+
+            while (match = regex.exec(queryString)) {
+                params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+            }
+
+            return params;
+        }
+
+async function fetchDataAndPopulate() {
+    try {
+        const params = getURLParameters();
+        const studentClass = params.class || 'Unknown Class';
+        const subject = params.subject || 'Unknown Subject';
+
+        const response = await fetch(`http://localhost:8000/api/tutorials/answer?class=${studentClass}&subject=${subject}`);
+
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        const correctAnswers = data[0].answers;  // Extract only the answers array
+
+        // Call compareAnswers with the extracted answers array
+        compareAnswers(correctAnswers);
+       
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+function compareAnswers(correctAnswers) {
+    if (isSubmitting) return; // Prevent multiple submissions
+    isSubmitting = true; // Set the flag
+    const studentAnswers = getCheckedValues(); // Fetch student-selected answers
+    const totalQuestions = correctAnswers.length;
+    let score = 0;
+    const comparisonResults = [];
+
+    if (!studentAnswers || !correctAnswers) {
+        console.warn("Missing studentAnswers or correctAnswers data.");
+        isSubmitting = false; // Reset the flag
+        return;
+    }
+
+    const maxScore = 100; // Define the maximum score
+    const pointsPerQuestion = (totalQuestions > 0) ? maxScore / totalQuestions : 0; // Calculate points per question dynamically
+
+    // Loop through each question to calculate the score
+    for (let index = 0; index < totalQuestions; index++) {
+        const correctAnswer = correctAnswers[index]; // Array of correct answers
+        const studentAnswer = studentAnswers[`question${index}`];
+
+        // Normalize studentAnswer to ensure it's always an array
+        const normalizedStudentAnswer = Array.isArray(studentAnswer) ? studentAnswer : [studentAnswer];
+
+        // Check if all student's selected answers are correct
+        const isCorrect = normalizedStudentAnswer.every(answer => correctAnswer.includes(answer));
+
+
+        if (isCorrect) {
+            score += pointsPerQuestion; // Increment the score by points for each correct answer
+        }
+
+        comparisonResults.push({
+            questionNumber: index + 1,
+            correctAnswer: correctAnswer,
+            studentAnswer: normalizedStudentAnswer,
+            isCorrect: isCorrect
+        });
+    }
+
+ 
+    const TimeRange = sessionStorage.getItem('TimeRange'); // Retrieve exam title
+    const Subject = sessionStorage.getItem('Subject'); // Retrieve exam title
+    const examTitle = sessionStorage.getItem('examtitel'); // Retrieve exam title
+
+    const params = getURLParameters();
+    const studentClass = params.class || 'Unknown Class';
+    const rollno = params.rollno || 'Unknown Roll Number';
+    const user = params.user || 'Unknown Roll Number';
+
+    const tutorialData = {
+        selectedClass: params.class || 'Unknown Class',
+        notcomplete: 0,
+        class: studentClass,
+        rollno: rollno || 'Unknown Roll Number',
+        completed: 1,
+        name: user,
+        score: Math.floor(score)  || 0,
+        testname: examTitle,
+        subject: Subject,
+        examdate: sessionStorage.getItem('ExamDate'),
+        duration: TimeRange,
+    };
+
+    saveTutorialResults(tutorialData).finally(() => {
+        isSubmitting = false; // Reset the flag after submission
+    });
+}
+
+async function saveTutorialResults(tutorialData) {
+    try {
+        const response = await fetch('http://localhost:8000/api/tutorials/mark', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tutorialData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save tutorial results: ' + response.statusText);
+        }
+
+        const result = await response.json();
+        const score = tutorialData.score; // Use the score from the tutorial data
+
+        // Call the function to open the popup and display the score
+        openPopup(score) 
+        console.log('Tutorial results saved successfully:', result);
+    } catch (error) {
+        console.error('Error saving tutorial results:', error);
+    }
+}
+
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
+}
+
+const debouncedCompareAnswers = debounce(compareAnswers, 1000); // Adjust delay as necessary
+
+ // Side navigation toggle
+ function toggleNav() {
+      const sideNav = document.getElementById("sideNav");
+      sideNav.classList.toggle("active");
+      if (sideNav.classList.contains("active")) {
+        document.addEventListener("click", closeNavOnClickOutside);
+      } else {
+        document.removeEventListener("click", closeNavOnClickOutside);
+      }
+    }
+
+    function closeNavOnClickOutside(event) {
+      const sideNav = document.getElementById("sideNav");
+      const burgerIcon = document.querySelector(".burger-icon");
+      if (!sideNav.contains(event.target) && !burgerIcon.contains(event.target)) {
+        sideNav.classList.remove("active");
+        document.removeEventListener("click", closeNavOnClickOutside);
+      }
+    }
+
+
+</script>
+
+
+  </script>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+
+
+ 
+
+</body>
+ 
+</html>

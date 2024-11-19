@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout with Top and Side Navigation</title>
+  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/create.css">
+  <link rel="stylesheet" href="style/publish.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+ 
+
+   <!-- CSS for AlertifyJS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+
+
+</head>
+<body>
+
+    
+  
+
+  <style>
+    button, input, optgroup, select, textarea {
+    font-family: 14px !important;
+    }
+  </style>
+
+<!-- Side Navigation -->
+<div class="side-nav" id="sideNav">
+    <a href="#" id="homeLink2" class="menulink">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="22" height="22" viewBox="0 0 22 22" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82099 0.841828C10.0398 0.623112 10.3365 0.500244 10.6458 0.500244C10.9552 0.500244 11.2519 0.623112 11.4707 0.841828L18.4707 7.84183L20.804 10.1752C21.0165 10.3952 21.1341 10.6899 21.1314 10.9958C21.1288 11.3017 21.0061 11.5943 20.7898 11.8106C20.5735 12.0269 20.2808 12.1496 19.975 12.1523C19.6691 12.1549 19.3744 12.0373 19.1543 11.8248L18.8125 11.483V19.1667C18.8125 19.7855 18.5667 20.379 18.1291 20.8166C17.6915 21.2542 17.098 21.5 16.4792 21.5H12.9792C12.6697 21.5 12.373 21.3771 12.1542 21.1583C11.9354 20.9395 11.8125 20.6427 11.8125 20.3333V16.8333H9.47915V20.3333C9.47915 20.6427 9.35624 20.9395 9.13744 21.1583C8.91865 21.3771 8.62191 21.5 8.31249 21.5H4.81249C4.19365 21.5 3.60016 21.2542 3.16257 20.8166C2.72499 20.379 2.47915 19.7855 2.47915 19.1667V11.483L2.13732 11.8248C1.91728 12.0373 1.62258 12.1549 1.31669 12.1523C1.01079 12.1496 0.718175 12.0269 0.501865 11.8106C0.285556 11.5943 0.162859 11.3017 0.1602 10.9958C0.157542 10.6899 0.275136 10.3952 0.487653 10.1752L2.82099 7.84183L9.82099 0.841828Z" />
+        </svg>
+        &nbsp;Home
+    </a>
+    
+    <a href="#" id="scheduleLink2" class="menulink" style="text-align: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="29" height="28" viewBox="0 0 29 28" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.04628 2.79999C8.30367 2.79999 7.59148 3.09499 7.06638 3.62009C6.54128 4.14519 6.24628 4.85738 6.24628 5.59999V22.4C6.24628 23.1426 6.54128 23.8548 7.06638 24.3799C7.59148 24.905 8.30367 25.2 9.04628 25.2H20.2463C20.9889 25.2 21.7011 24.905 22.2262 24.3799C22.7513 23.8548 23.0463 23.1426 23.0463 22.4V10.3796C23.0461 9.63704 22.751 8.92497 22.2259 8.39999L17.4463 3.62039C16.9213 3.09525 16.2092 2.80015 15.4667 2.79999H9.04628ZM11.8463 16.8C11.8463 16.4287 11.6988 16.0726 11.4362 15.81C11.1737 15.5475 10.8176 15.4 10.4463 15.4C10.075 15.4 9.71888 15.5475 9.45633 15.81C9.19378 16.0726 9.04628 16.4287 9.04628 16.8V21C9.04628 21.3713 9.19378 21.7274 9.45633 21.9899C9.71888 22.2525 10.075 22.4 10.4463 22.4C10.8176 22.4 11.1737 22.2525 11.4362 21.9899C11.6988 21.7274 11.8463 21.3713 11.8463 21V16.8ZM14.6463 12.6C15.0176 12.6 15.3737 12.7475 15.6362 13.01C15.8988 13.2726 16.0463 13.6287 16.0463 14V21C16.0463 21.3713 15.8988 21.7274 15.6362 21.9899C15.3737 22.2525 15.0176 22.4 14.6463 22.4C14.275 22.4 13.9189 22.2525 13.6563 21.9899C13.3938 21.7274 13.2463 21.3713 13.2463 21V14C13.2463 13.6287 13.3938 13.2726 13.6563 13.01C13.9189 12.7475 14.275 12.6 14.6463 12.6ZM20.2463 11.2C20.2463 10.8287 20.0988 10.4726 19.8362 10.21C19.5737 9.94749 19.2176 9.79999 18.8463 9.79999C18.475 9.79999 18.1189 9.94749 17.8563 10.21C17.5938 10.4726 17.4463 10.8287 17.4463 11.2V12.6C17.4463 12.9713 17.5938 13.3274 17.8563 13.5899C18.1189 13.8525 18.475 14 18.8463 14C19.2176 14 19.5737 13.8525 19.8362 13.5899C20.0988 13.3274 20.2463 12.9713 20.2463 12.6V11.2Z" fill="#999999" />
+        </svg>
+        &nbsp;Report
+    </a>
+  
+  <script>
+   function populateLinks() {
+    const teacher = sessionStorage.getItem('teacher');
+   
+
+    if (teacher) {
+        // Set the links dynamically
+        const homeLink = document.getElementById('homeLink2');
+        const scheduleLink = document.getElementById('scheduleLink2');
+
+        homeLink.href = `index.html?user=${teacher}`;
+        scheduleLink.href = `Reports.html?user=${teacher}`;
+    } else {
+        console.log('No teacher found in sessionStorage');
+    }
+}
+
+      document.addEventListener('DOMContentLoaded', populateLinks);
+  </script>
+
+  </div>
+
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <style>
+        .main_content_container {
+    margin: 20px;
+    padding: 0px;
+    border-radius: 20px;
+    background: #F6F6F6;
+    overflow: auto;
+    height: 84vh;
+}
+
+H5{
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: left;
+}
+
+.answer-block {
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400 !important;
+    line-height: normal;
+    text-align: left;
+    overflow: auto;
+    text-wrap: auto;
+    word-wrap: break-word;
+}
+
+.qa-block{
+    text-align: right;
+}
+
+    </style>
+
+
+
+    <!-- Question Content Area -->
+    <div class="main_content_container" >
+        <div class="template">
+            <div class="exam_head">
+             
+            </div>
+        </div>
+        <div class="question" id="questionsContainer"></div>
+      <!-- Questions will be dynamically loaded here -->
+    </div>
+  
+
+    
+   
+
+
+
+<!-- Popup Overlay -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+<div class="close" id="buttonclose">
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeiconbutton" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <path d="M8.44727 21.5538L15.001 15L21.5548 21.5538M21.5548 8.44625L14.9998 15L8.44727 8.44625" stroke="#00535E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+</div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="checkico" width="136" height="136" viewBox="0 0 136 136" fill="none">
+            <path d="M67.9998 11.3333L82.8833 22.1907L101.308 22.1567L106.967 39.6893L121.893 50.49L116.166 68L121.893 85.51L106.967 96.3107L101.308 113.843L82.8833 113.809L67.9998 124.667L53.1163 113.809L34.6911 113.843L29.0329 96.3107L14.1069 85.51L19.8331 68L14.1069 50.49L29.0329 39.6893L34.6911 22.1567L53.1163 22.1907L67.9998 11.3333Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M48.1665 68L62.3332 82.1667L90.6665 53.8333" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      <p class="popcont"><span id="subject"></span> Exam has been Successfully Published to class - <span id="stdclass"></span></p>
+      <!-- <button onclick="closePopup()" class="btn btn-primary">Yes, Publish</button>
+      <button onclick="closePopup()" class="btn btn-secondary">Cancel</button> -->
+    </div>
+  </div>
+
+  <script>
+    // Retrieve the value from session storage
+    const selectedClass = sessionStorage.getItem("selectedClass");
+    const selectedSubject = sessionStorage.getItem("selectedSubject");
+    // Check if the value exists and is not null
+    if (selectedClass && selectedSubject) {
+        // Set the value as the inner text of the span
+        document.getElementById("stdclass").textContent = selectedClass;
+        document.getElementById("subject").textContent = selectedSubject;
+    }
+</script>
+ <!-- JavaScript for AlertifyJS -->
+ <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+  <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve values from session storage
+    const examTitle = sessionStorage.getItem("examTitle");
+    const selectedSubject = sessionStorage.getItem("selectedSubject");
+    const params = getURLParameters2();
+        const user = params.user || 'Unknown Class'; // Fallback if user is not found
+        const rollno = params.rollno || 'Unknown Roll Number'; // Fallback if rollno is not found
+        const subject = params.subject || 'Unknown Roll Number'; // Fallback if rollno is not found
+    // Get the exam_head div
+    const examHeadDiv = document.querySelector(".exam_head");
+
+    // Set the content with examTitle and selectedSubject
+    if (examTitle && selectedSubject || subject) {
+        examHeadDiv.innerHTML = `${subject}`;
+    } else {
+        examHeadDiv.innerHTML = "No Exam Title or Subject Selected";
+    }
+});
+
+
+// Open popup and add blur effect
+function openPopup() {
+    document.getElementById("popupOverlay").classList.add("active");
+}
+
+// Close popup, remove blur, and redirect to index
+function closePopup() {
+    document.getElementById("popupOverlay").classList.remove("active");
+    const user = sessionStorage.getItem('teacher');
+    window.location.href = `index.html?user=${user}`; // Adjust if different
+}
+
+
+
+
+
+document.getElementById("buttonclose").addEventListener("click", closePopup);
+
+function getURLParameters2() {
+    const params = {};
+    const queryString = window.location.search.substring(1); // Remove the '?' at the beginning
+    const queryArray = queryString.split('&'); // Split by '&' to get each parameter
+
+    queryArray.forEach(param => {
+        const [key, value] = param.split('='); // Split by '=' to get key and value
+        if (key && value) {
+            params[decodeURIComponent(key)] = decodeURIComponent(value); // Decode the URI components
+        }
+    });
+
+    return params; // Return the object containing key-value pairs of parameters
+}
+
+
+// Function to fetch data from the API
+async function fetchQuestions() {
+    try {
+        // Retrieve parameters from the URL
+        const params = getURLParameters2();
+        const user = params.user || 'Unknown Class'; // Fallback if user is not found
+        const rollno = params.rollno || 'Unknown Roll Number'; // Fallback if rollno is not found
+        const subject = params.subject || 'Unknown Roll Number'; // Fallback if rollno is not found
+
+        const response = await fetch(`http://localhost:8000/api/tutorials/descriptiveanswer?rollno=${rollno}&user=${user}&subject=${subject}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const actualDataArray = await response.json(); // Assuming the response is in JSON format
+
+        // Transform the actual data to match the desired format
+        const dummyData = {
+            questions: actualDataArray.map(item => {
+                // Split the questions and answers into arrays
+                const questionsArray = item.question.split(',').map(q => q.trim());
+                const answersArray = item.answer.split(',').map(a => a.trim());
+                const marksArray = JSON.parse(item.mark); // Parse the mark string into an array
+                // Return each question and its corresponding answer
+                return questionsArray.map((question, index) => ({
+                    title: question,
+                    answer: answersArray[index] || null, // Handle case where there is no answer for a question
+                    mark: marksArray[index] || 'Not Available'
+                }));
+            }).flat() // Flatten the array to create a single-level array of questions and answers
+        };
+
+        // Call the loadQuestions function with the formatted dummy data
+        loadQuestions(dummyData);
+
+    } catch (error) {
+        console.error('Error fetching questions:', error);
+    }
+}
+
+
+
+
+
+
+
+function loadQuestions(data) {
+    // Log the received data for debugging
+    console.log('Data received:', data);
+
+    const questionsContainer = document.getElementById('questionsContainer');
+    questionsContainer.innerHTML = ''; // Clear any existing content
+
+    // Iterate over each question-answer pair
+    data.questions.forEach((question, index) => {
+        const qaContainer = document.createElement('div');
+        qaContainer.classList.add('qa-block', 'mb-4', 'p-3', 'border', 'rounded');
+
+        // Question title
+        const questionTitle = document.createElement('h5');
+        questionTitle.innerText = `Q${index + 1}. ${question.title}`;
+        qaContainer.appendChild(questionTitle);
+
+        // Display the answer
+        const answerContainer = document.createElement('div');
+        answerContainer.classList.add('answer-block', 'mt-2', 'font-weight-bold');
+        answerContainer.innerText = `Answer: ${question.answer ?? 'No answer available'}`;
+        qaContainer.appendChild(answerContainer);
+
+        // Display the mark
+        const markContainer = document.createElement('div');
+        markContainer.classList.add('mark-container', 'mt-2');
+        markContainer.innerText = `Mark: ${question.mark || 'No mark available'}`;
+        qaContainer.appendChild(markContainer);
+
+        questionsContainer.appendChild(qaContainer);
+    });
+
+    // Create the final container for total marks
+    const totalContainer = document.createElement('div');
+    totalContainer.classList.add('qa-block', 'mb-4', 'p-3', 'border', 'rounded');
+
+    // Label for total mark
+    const totalLabel = document.createElement('h5');
+    totalLabel.innerText = "Total Marks:";
+    totalContainer.appendChild(totalLabel);
+
+    // Calculate the total marks from the data.questions array
+    const totalMarks = data.questions.reduce((sum, question) => sum + (parseInt(question.mark) || 0), 0);
+
+    // Display the total marks
+    const totalMarkDisplay = document.createElement('div');
+    totalMarkDisplay.classList.add('total-marks');
+    totalMarkDisplay.innerText = `Total Marks: ${totalMarks}`;
+    totalContainer.appendChild(totalMarkDisplay);
+
+    questionsContainer.appendChild(totalContainer);
+}
+
+
+window.onload = fetchQuestions();
+
+// Side navigation toggle
+function toggleNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.classList.toggle("active");
+    if (sideNav.classList.contains("active")) {
+        document.addEventListener("click", closeNavOnClickOutside);
+    } else {
+        document.removeEventListener("click", closeNavOnClickOutside);
+    }
+}
+
+    function closeNavOnClickOutside(event) {
+      const sideNav = document.getElementById("sideNav");
+      const burgerIcon = document.querySelector(".burger-icon");
+      if (!sideNav.contains(event.target) && !burgerIcon.contains(event.target)) {
+        sideNav.classList.remove("active");
+        document.removeEventListener("click", closeNavOnClickOutside);
+      }
+    }
+  </script>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+
+  <style>
+    .alertify .ajs-header {
+      color: #ffffff !important;
+      font-weight: 700;
+      background: #123c41 !important;
+      border-bottom: #eee 1px solid;
+      border-radius: 2px 2px 0 0;
+  }
+  .alertify .ajs-dialog {
+    position: relative;
+    margin: 5% auto;
+    min-height: 110px;
+    max-width: 500px;
+    padding: 24px 24px 0 24px;
+    outline: 0;
+    background-color: #fff;
+    z-index: 99999999;
+}
+  </style>
+ 
+
+</body>
+ 
+</html>

@@ -1,0 +1,186 @@
+.template {
+    height: 20vh;
+    background: #00535e;
+    padding: 10px;
+    border-radius: 20px;
+    position: sticky;
+    top: 0px;
+    z-index: 99999;
+}
+
+.main_content_container {
+    margin: 20px;
+    padding: 0px;
+    border-radius: 20px;
+    background: #F6F6F6;
+    overflow: auto;
+    height: 450px;
+}
+
+
+
+
+.tablegb {
+    margin: 20px;
+    padding: 0px;
+    border-radius: 20px;
+    background: #F6F6F6;
+    overflow: auto;
+    height: 620px !important;
+}
+.tablegbstd{
+    margin: 20px;
+    padding: 0px;
+    border-radius: 20px;
+    background: #F6F6F6;
+    overflow: auto;
+    height: 575px !important;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1200px) {
+    .main_content_container {
+        margin: 20px;
+        padding: 0px;
+        border-radius: 20px;
+        background: #F6F6F6;
+        overflow: auto;
+        height: 405px;
+    }
+    .template {
+        height: 15vh;
+        background: #00535e;
+        padding: 10px;
+        border-radius: 20px;
+        position: sticky;
+        top: 0px;
+        z-index: 99;
+    }
+
+    .exam_head{
+        padding: 10px;
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+}
+
+
+.exam_head{
+    padding: 10px;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* Background blur */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
+    visibility: hidden; /* initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Popup content */
+  .popup-content {
+    border-radius: 27px;
+background: #00535E;
+    padding: 20px;
+  
+    width: 300px;
+    text-align: center;
+    width: 500px;
+height: 40vh;
+flex-shrink: 0;
+  }
+  
+  .popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  body.blur {
+    filter: blur(4px); /* Applies a blur to the background */
+    overflow: hidden; /* Prevents scrolling while popup is active */
+  }
+  
+  .popcont {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 10px;
+}
+
+.closeiconbutton{
+    background-color: #FFF;
+    border-radius: 27px;
+    z-index: 9999;
+}
+
+@media screen and (min-width:300px) and (max-width:526px) {
+    .popup-content {
+        border-radius: 27px;
+        background: #00535E;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        width: 300px;
+        height: 32vh;
+        flex-shrink: 0;
+    }
+
+    .closeiconbutton {
+        background-color: #FFF;
+        border-radius: 27px;
+        z-index: 9999;
+        width: 15px;
+        height: 15px;
+    }
+    .checkico{
+        width: 50px;
+        height: 70px;
+    }
+    .popcont {
+        color: #FFF;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        padding: 10px;
+    }
+}
+
+
+.viewstudent{
+    padding: 1px 20px;
+    border-radius: 37px;
+    border: 2px solid #00535E;
+    background: #FFF;
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+

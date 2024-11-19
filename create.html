@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout with Top and Side Navigation</title>
+  <link rel="stylesheet" href="style/index.css"> <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style/create.css"> <!-- Link to the external CSS file -->
+ <!-- Bootstrap CSS -->
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+
+    <!-- CSS for AlertifyJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+</head>
+<body>
+
+
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <span class="burger-icon" onclick="toggleNav()">☰</span>
+    
+    <script>
+      // Function to extract URL parameters
+      function getURLParameters() { 
+      const params = {};
+      const queryString = window.location.search.substring(1);
+      const regex = /([^&=]+)=([^&]*)/g;
+      let match;
+  
+      while (match = regex.exec(queryString)) {
+          params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+      }
+  
+      // Store parameters in session storage
+      for (const key in params) {
+          sessionStorage.setItem(key, params[key]);
+      }
+      sessionStorage.setItem("teacher",params.user)
+      // Retrieve user parameter, defaulting to 'Unknown user' if not provided
+      const user = params.user || 'Unknown user';
+  
+      // Update the relevant HTML elements with the user information
+      document.getElementById("users").textContent = user;
+      document.getElementById("profile").textContent = user;
+  
+      // Return the params object if needed elsewhere
+      return params;
+  }
+  
+  
+      // Call the function when the DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', getURLParameters);
+  </script>
+
+
+<div class="row_top">
+    <div class="Welcomemsg">
+      <label class="users">Hello, Mr. <span id="users"></span></label>
+      <p class="text-gray">Welcome to Exam site</p>
+    </div>
+<div class="top_nav_content">
+  
+  <input type="search" class="searchbar" placeholder=" &#xF002; Search by exam title" style="font-family:Arial, FontAwesome" >
+</div>
+
+<div class="profile">
+  <img src="source/Ellipse 1.svg" >
+  <div class="userdetails">
+  <label class="uname users"> <span id="profile"></span></label>
+  <p class="text-gray">Teacher</p>
+  </div>
+</div>
+</div>
+
+  </div>
+
+  <style>
+    button, input, optgroup, select, textarea {
+    font-family: 14px !important;
+    }
+  </style>
+
+
+  <!-- Side Navigation -->
+  <div class="side-nav" id="sideNav">
+    <a href="#" id="homeLink" class="menulink">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="22" height="22" viewBox="0 0 22 22" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82099 0.841828C10.0398 0.623112 10.3365 0.500244 10.6458 0.500244C10.9552 0.500244 11.2519 0.623112 11.4707 0.841828L18.4707 7.84183L20.804 10.1752C21.0165 10.3952 21.1341 10.6899 21.1314 10.9958C21.1288 11.3017 21.0061 11.5943 20.7898 11.8106C20.5735 12.0269 20.2808 12.1496 19.975 12.1523C19.6691 12.1549 19.3744 12.0373 19.1543 11.8248L18.8125 11.483V19.1667C18.8125 19.7855 18.5667 20.379 18.1291 20.8166C17.6915 21.2542 17.098 21.5 16.4792 21.5H12.9792C12.6697 21.5 12.373 21.3771 12.1542 21.1583C11.9354 20.9395 11.8125 20.6427 11.8125 20.3333V16.8333H9.47915V20.3333C9.47915 20.6427 9.35624 20.9395 9.13744 21.1583C8.91865 21.3771 8.62191 21.5 8.31249 21.5H4.81249C4.19365 21.5 3.60016 21.2542 3.16257 20.8166C2.72499 20.379 2.47915 19.7855 2.47915 19.1667V11.483L2.13732 11.8248C1.91728 12.0373 1.62258 12.1549 1.31669 12.1523C1.01079 12.1496 0.718175 12.0269 0.501865 11.8106C0.285556 11.5943 0.162859 11.3017 0.1602 10.9958C0.157542 10.6899 0.275136 10.3952 0.487653 10.1752L2.82099 7.84183L9.82099 0.841828Z" />
+        </svg>
+        &nbsp;Home
+    </a>
+    
+    <a href="#" id="scheduleLink" class="menulink" style="text-align: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="homeicon" width="29" height="28" viewBox="0 0 29 28" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.04628 2.79999C8.30367 2.79999 7.59148 3.09499 7.06638 3.62009C6.54128 4.14519 6.24628 4.85738 6.24628 5.59999V22.4C6.24628 23.1426 6.54128 23.8548 7.06638 24.3799C7.59148 24.905 8.30367 25.2 9.04628 25.2H20.2463C20.9889 25.2 21.7011 24.905 22.2262 24.3799C22.7513 23.8548 23.0463 23.1426 23.0463 22.4V10.3796C23.0461 9.63704 22.751 8.92497 22.2259 8.39999L17.4463 3.62039C16.9213 3.09525 16.2092 2.80015 15.4667 2.79999H9.04628ZM11.8463 16.8C11.8463 16.4287 11.6988 16.0726 11.4362 15.81C11.1737 15.5475 10.8176 15.4 10.4463 15.4C10.075 15.4 9.71888 15.5475 9.45633 15.81C9.19378 16.0726 9.04628 16.4287 9.04628 16.8V21C9.04628 21.3713 9.19378 21.7274 9.45633 21.9899C9.71888 22.2525 10.075 22.4 10.4463 22.4C10.8176 22.4 11.1737 22.2525 11.4362 21.9899C11.6988 21.7274 11.8463 21.3713 11.8463 21V16.8ZM14.6463 12.6C15.0176 12.6 15.3737 12.7475 15.6362 13.01C15.8988 13.2726 16.0463 13.6287 16.0463 14V21C16.0463 21.3713 15.8988 21.7274 15.6362 21.9899C15.3737 22.2525 15.0176 22.4 14.6463 22.4C14.275 22.4 13.9189 22.2525 13.6563 21.9899C13.3938 21.7274 13.2463 21.3713 13.2463 21V14C13.2463 13.6287 13.3938 13.2726 13.6563 13.01C13.9189 12.7475 14.275 12.6 14.6463 12.6ZM20.2463 11.2C20.2463 10.8287 20.0988 10.4726 19.8362 10.21C19.5737 9.94749 19.2176 9.79999 18.8463 9.79999C18.475 9.79999 18.1189 9.94749 17.8563 10.21C17.5938 10.4726 17.4463 10.8287 17.4463 11.2V12.6C17.4463 12.9713 17.5938 13.3274 17.8563 13.5899C18.1189 13.8525 18.475 14 18.8463 14C19.2176 14 19.5737 13.8525 19.8362 13.5899C20.0988 13.3274 20.2463 12.9713 20.2463 12.6V11.2Z" fill="#999999" />
+        </svg>
+        &nbsp;Report
+    </a>
+  
+    <script>
+      function populateLinks() {
+        // Retrieve values from session storage
+        const studentClass = sessionStorage.getItem('class');
+    const rollno = sessionStorage.getItem('rollno');
+    const teacher = sessionStorage.getItem('teacher');
+    
+        // Set the links dynamically
+        const homeLink = document.getElementById('homeLink');
+        const scheduleLink = document.getElementById('scheduleLink');
+        const resourcesLink = document.getElementById('resourcesLink');
+    
+        homeLink.href = `index.html?user=${teacher}`;
+        scheduleLink.href = `Reports.html?user=${teacher}`;
+      
+    }
+    
+    // Call this function when the page loads
+    window.onload = function() {
+        getURLParameters(); // Call to populate session storage
+        populateLinks();    // Call to set link URLs
+    };
+    </script>
+    
+    
+  </div>
+
+  <!-- Main Content Area -->
+ 
+
+
+  <div class="main-content">
+
+
+    <div class="navigatermark">
+      <div class="Create">
+        <div class="Setup setup1">1</div>
+        <div class="stage stage1">
+        <div class="stephead Complete">Create</div>
+        <span class="status text-gray">Completed</span></div>
+      </div>
+     
+  
+      <div class="nextarow"> ></div>
+  
+      <div class="Setupnext">
+         <div class="Setup">2</div>
+      <div class="stephead">Setup Test</div>
+    </div>
+  
+    <div class="nextarow"> ></div>
+  
+      <div class="Publish"> 
+        <div class="Setup">3</div>
+      <div class="stephead">Publish</div>
+     </div>
+      </div>
+
+
+     
+        <div class="main_content_container">
+            <div class="for_row col-12">
+                <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Select Class</div>
+                <div class="fields col-4 classifield">
+                    <select id="classSelect" class="searchbar col-8" required>
+                        <option value="">Select Class</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+
+                    <select  id="secsion" class="searchbar col-4" required>
+                      <option value="">section</option>
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>D</option>
+                      <option>E</option>
+                      <option>F</option>
+                      <option>G</option>
+                      <option>H</option>
+                      <option>I</option>
+                      <option>J</option>
+                      <option>K</option>
+                      <option>L</option>
+                      <option>M</option>
+                      <option>N</option>
+                      <option>O</option>
+                      <option>P</option>
+                      <option>Q</option>
+                      <option>R</option>
+                      <option>S</option>
+                      <option>T</option>
+                      <option>U</option>
+                      <option>V</option>
+                      <option>W</option>
+                      <option>X</option>
+                      <option>Y</option>
+                      <option>Z</option>
+                  </select>
+                </div>
+            </div>
+
+            <style>
+              .classifield{
+                display: flex;
+                margin: 0px !important;
+                padding: 0px !important;
+                gap: 25px;
+            }
+              
+            </style>
+    
+            <div class="for_row col-12">
+              <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Number of students</div>
+              <div class="fields">
+                  <input type="text" maxlength="3" id="totalstudent" class="searchbar" required>
+              </div>
+          </div>
+
+
+            <div class="for_row col-12">
+                <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Select Subject</div>
+                <div class="fields">
+                    <input type="text" maxlength="15" id="subjectInput" class="searchbar" required>
+                </div>
+            </div>
+    
+            <div class="for_row col-12">
+                <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Exam Title</div>
+                <div class="fields">
+                    <input type="text"  maxlength="15" id="examTitleInput" class="searchbar" required>
+                </div>
+            </div>
+    
+            <div class="for_row col-12">
+                <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Select Date</div>
+                <div class="fields">
+                    <input type="date" id="dateInput" class="searchbar" required>
+                </div>
+            </div>
+    
+            <div class="for_row col-12">
+                <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">Start Time</div>
+                <div class="fields">
+                    <input type="time" id="timeInput" class="searchbar" required>
+                </div>
+            </div>
+
+            <div class="for_row col-12">
+              <div class="fieldlabel col-sm-12 col-md-6 col-lg-2">End Time</div>
+              <div class="fields">
+                  <input type="time" id="timeInput2" class="searchbar" required>
+              </div>
+          </div>
+    
+           
+        </div>
+    
+        <style>
+          .alertify .ajs-header {
+            color: #ffffff !important;
+            font-weight: 700;
+            background: #123c41 !important;
+            border-bottom: #eee 1px solid;
+            border-radius: 2px 2px 0 0;
+        }
+        .alertify .ajs-dialog {
+          position: relative;
+          margin: 5% auto;
+          min-height: 110px;
+          max-width: 500px;
+          padding: 24px 24px 0 24px;
+          outline: 0;
+          background-color: #fff;
+          z-index: 99999999;
+      }
+        </style>
+   
+    
+    
+     <!-- JavaScript for AlertifyJS -->
+     <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("nextclick2").addEventListener("click", function() {
+              // Run validation and stop if it fails
+              if (!validateForm()) {
+                  return;
+              }
+  
+              // Check if required fields have values
+              const classValue = document.getElementById("classSelect").value;
+              const secsion = document.getElementById("secsion").value;
+              const subjectValue = document.getElementById("subjectInput").value;
+              const totalstudent = document.getElementById("totalstudent").value;
+              const examTitleValue = document.getElementById("examTitleInput").value;
+              const dateValue = document.getElementById("dateInput").value;
+              const timeValue = document.getElementById("timeInput").value;
+              const timeValue2 = document.getElementById("timeInput2").value;
+
+
+
+              if (classValue && secsion && subjectValue && examTitleValue && dateValue && timeValue && totalstudent) {
+                  // Store input values in session storage
+                  sessionStorage.setItem("selectedClass", classValue);
+                  sessionStorage.setItem("secsion", secsion);
+                  sessionStorage.setItem("selectedSubject", subjectValue);
+                  sessionStorage.setItem("totalstudent", totalstudent);
+                  sessionStorage.setItem("examTitle", examTitleValue);
+                  sessionStorage.setItem("selectedDate", dateValue);
+                  sessionStorage.setItem("selectedTime", timeValue);
+                  sessionStorage.setItem("selectedTime2", timeValue2);
+                  sessionStorage.setItem("TimeRange", timeValue + "-" + timeValue2);
+
+                  // Redirect to the publish page
+                  const user = sessionStorage.getItem('teacher');
+                  window.location.href = `publish.html?user=${user}`; // Replace with your target URL
+              } else {
+                 
+
+
+                  alertify.alert(
+                `<div style="display: flex; align-items: center;">
+                    <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" alt="Alert Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <span>Please fill in all required fields.</span>
+                </div>`
+            )
+            .setHeader("Alert") // Set custom header title here
+            .setting({
+                'onok': function() {
+                    console.log("Alert dismissed");
+                }
+            });
+              }
+          });
+  
+          // Function to validate the form
+          function validateForm() {
+            const classSelect = document.getElementById("classSelect").value; // Ensure to get the value
+            const secsion = document.getElementById("secsion").value;
+            const subjectInput = document.getElementById("subjectInput").value; // Ensure to get the value
+            const examTitleInput = document.getElementById("examTitleInput").value; // Ensure to get the value
+            const dateInput = document.getElementById("dateInput").value; // Ensure to get the value
+            const timeInput = document.getElementById("timeInput").value; // Ensure to get the value
+            const timeInput2 = document.getElementById("timeInput2").value; // Get the value of timeInput2
+            const totalstudent = document.getElementById("totalstudent").value; // Ensure to get the value
+
+                // Check if any of the required fields are empty
+                if (!classSelect || !subjectInput || !secsion || !examTitleInput || !dateInput || !timeInput || !timeInput2 || !totalstudent) {
+                 
+
+
+                    alertify.alert(
+                `<div style="display: flex; align-items: center;">
+                    <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" alt="Alert Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <span>All fields are required.</span>
+                </div>`
+            )
+            .setHeader("Alert") // Set custom header title here
+            .setting({
+                'onok': function() {
+                    console.log("Alert dismissed");
+                }
+            });
+                    return false; // Stop further execution if validation fails
+                }
+              return true;
+          }
+      });
+  </script>
+  
+  
+    
+    
+   
+  
+      <div class="nextbtnparent" >
+        <div class="upbtn nextbtn" id="nextclick2">
+          <label class="btnlable" style="margin-bottom: 0px;">Next</label>
+     
+        </div>
+        </div>
+      
+  </div>
+
+
+
+  <script>
+    function toggleNav() {
+      const sideNav = document.getElementById("sideNav");
+      sideNav.classList.toggle("active");
+
+      // Toggle event listener for clicks outside the side menu
+      if (sideNav.classList.contains("active")) {
+        document.addEventListener("click", closeNavOnClickOutside);
+      } else {
+        document.removeEventListener("click", closeNavOnClickOutside);
+      }
+    }
+
+    function closeNavOnClickOutside(event) {
+      const sideNav = document.getElementById("sideNav");
+      const burgerIcon = document.querySelector(".burger-icon");
+
+      // Check if the click is outside the side nav and not on the burger icon
+      if (!sideNav.contains(event.target) && !burgerIcon.contains(event.target)) {
+        sideNav.classList.remove("active");
+        document.removeEventListener("click", closeNavOnClickOutside);
+      }
+    }
+  </script>
+  <!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>
